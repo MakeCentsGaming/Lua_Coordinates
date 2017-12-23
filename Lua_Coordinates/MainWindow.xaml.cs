@@ -7,6 +7,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Reflection;
 using System.Globalization;
+using MakeCents;
 
 namespace Lua_Coordinates
 {
@@ -19,6 +20,7 @@ namespace Lua_Coordinates
       public MainWindow()
       {
          InitializeComponent();
+         clsDragNDrop.TextBoxDragNDrop(textBox, this);
 
          Version v = Assembly.GetExecutingAssembly().GetName().Version;
          MVM.About = string.Format(CultureInfo.InvariantCulture, @"Version {0}.{1}.{2} (r{3})", v.Major, v.Minor, v.Build, v.Revision);
