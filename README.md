@@ -1,4 +1,4 @@
-####Lua Coordinates
+#### Lua Coordinates
 
 You can override the background image by pasting the path to the image in the text box below the image
 
