@@ -1,0 +1,14 @@
+C:\Users\MakeCents\Source\GitHub\Lua_Coordinates\Lua_Coordinates\bin\Release\Lua_Coordinates.exe.config
+C:\Users\MakeCents\Source\GitHub\Lua_Coordinates\Lua_Coordinates\bin\Release\Lua_Coordinates.exe
+C:\Users\MakeCents\Source\GitHub\Lua_Coordinates\Lua_Coordinates\bin\Release\Lua_Coordinates.pdb
+C:\Users\MakeCents\Source\GitHub\Lua_Coordinates\Lua_Coordinates\obj\Release\MainWindow.g.cs
+C:\Users\MakeCents\Source\GitHub\Lua_Coordinates\Lua_Coordinates\obj\Release\App.g.cs
+C:\Users\MakeCents\Source\GitHub\Lua_Coordinates\Lua_Coordinates\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\MakeCents\Source\GitHub\Lua_Coordinates\Lua_Coordinates\obj\Release\Lua_Coordinates_MarkupCompile.cache
+C:\Users\MakeCents\Source\GitHub\Lua_Coordinates\Lua_Coordinates\obj\Release\Lua_Coordinates_MarkupCompile.lref
+C:\Users\MakeCents\Source\GitHub\Lua_Coordinates\Lua_Coordinates\obj\Release\MainWindow.baml
+C:\Users\MakeCents\Source\GitHub\Lua_Coordinates\Lua_Coordinates\obj\Release\Lua_Coordinates.g.resources
+C:\Users\MakeCents\Source\GitHub\Lua_Coordinates\Lua_Coordinates\obj\Release\Lua_Coordinates.Properties.Resources.resources
+C:\Users\MakeCents\Source\GitHub\Lua_Coordinates\Lua_Coordinates\obj\Release\Lua_Coordinates.csproj.GenerateResource.Cache
+C:\Users\MakeCents\Source\GitHub\Lua_Coordinates\Lua_Coordinates\obj\Release\Lua_Coordinates.exe
+C:\Users\MakeCents\Source\GitHub\Lua_Coordinates\Lua_Coordinates\obj\Release\Lua_Coordinates.pdb
