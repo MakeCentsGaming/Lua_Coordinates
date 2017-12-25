@@ -206,10 +206,7 @@ namespace Lua_Coordinates
          UpdateSets();
       }
 
-      private void button_Click(object sender, RoutedEventArgs e)
-      {
-         drawing.EditingMode = InkCanvasEditingMode.EraseByStroke;
-      }
+
 
       private void drawerase_DropDownClosed(object sender, EventArgs e)
       {
@@ -234,7 +231,6 @@ namespace Lua_Coordinates
 
       private void drawing_MouseMove(object sender, MouseButtonEventArgs e)
       {
-         Console.WriteLine("test");
          UpdateSets();
       }
 
@@ -248,6 +244,7 @@ namespace Lua_Coordinates
          MVM.csetLeftRight = MVM.setLeftRight;
          MVM.csetTopBottom = MVM.setTopBottom;
       }
+
       /*FileStream fs = new FileStream(@"C:\Users\MakeCents\Desktop\test.png", FileMode.Open, FileAccess.Read);
 StrokeCollection strokes = new StrokeCollection(fs);
 drawing.Strokes = strokes;

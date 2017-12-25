@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lua_Coordinates"
         mc:Ignorable="d"
-        Title="MainWindow" Height="484.785" Width="604.5" Icon="lua_coordinates.png">
+        Title="Lua Coordinates" Height="484.785" Width="604.5" Icon="lua_coordinates.png">
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>

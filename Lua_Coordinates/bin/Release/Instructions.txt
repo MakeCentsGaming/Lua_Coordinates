@@ -1,0 +1,10 @@
+MakeCents
+12-23-17
+
+An application to help you get the coordinates on your screen, used for lua, and includes anchoring
+
+Drag your image to the tool to change the background
+
+right-click to copy the setleftright and settopbottom
+
+Expand the tool first, the strokes do not expand with it
