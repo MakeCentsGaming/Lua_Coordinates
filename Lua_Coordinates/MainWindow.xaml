@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lua_Coordinates"
         mc:Ignorable="d"
-        Title="Lua Coordinates" Height="484.785" Width="604.5" Icon="lua_coordinates.png">
+        Title="Lua Coordinates" Height="484.785" Width="604.5" Icon="lua_coordinates.png" MinHeight="484.785" MinWidth="604.5">
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>
     <Grid Margin="0,1,0,-1">
 
-        <InkCanvas x:Name="drawing" Margin="10,10,10,151.785" Cursor="Cross" MouseMove="drawing_MouseMove" MouseRightButtonUp="drawing_MouseRightButtonUp">
+        <InkCanvas x:Name="drawing" Margin="10,4.664,10,161.071" Cursor="Cross" MouseMove="drawing_MouseMove" MouseRightButtonUp="drawing_MouseRightButtonUp" MouseEnter="drawing_MouseEnter">
             <InkCanvas.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Copy setLeftRight" Command="{Binding CopyLeftRight}" />
                     <MenuItem Header="Copy setTopBottom"  Command="{Binding CopyTopBottom}"/>
-
+                    <MenuItem Header="Copy both"  Command="{Binding CopyBoth}"/>
                 </ContextMenu>
             </InkCanvas.ContextMenu>
             <InkCanvas.Background>
@@ -27,7 +27,7 @@
 
             </InkCanvas.DefaultDrawingAttributes>
         </InkCanvas>
-        <TextBox x:Name="textBox" Margin="10,0,10,117.785" TextWrapping="NoWrap" Text="" TextChanged="textBox_TextChanged" Height="27" VerticalAlignment="Bottom"/>
+        <TextBox ToolTip="Drag and drop new image for background" x:Name="textBox" Margin="10,0,10,117.785" TextWrapping="NoWrap" Text="" TextChanged="textBox_TextChanged" Height="27" VerticalAlignment="Bottom"/>
         <Slider Value="{Binding curx}" x:Name="slider" HorizontalAlignment="Left" Margin="10,0,0,47.785" VerticalAlignment="Bottom" Width="70.143" Minimum="1" ValueChanged="slider_ValueChanged"/>
         <Slider Value="{Binding cury}" x:Name="slider_Copy" HorizontalAlignment="Left" Margin="68.087,0,0,27.636" VerticalAlignment="Bottom" Width="64.464" RenderTransformOrigin="0.5,0.5" Minimum="1" ValueChanged="slider_Copy_ValueChanged">
             <Slider.RenderTransform>
@@ -40,37 +40,42 @@
             </Slider.RenderTransform>
         </Slider>
         <Label x:Name="label" Content="Cursor Size" HorizontalAlignment="Left" Margin="21.965,0,0,24.99" VerticalAlignment="Bottom"/>
-        <TextBox IsReadOnly="True" x:Name="textBox1" Text="{Binding X}" HorizontalAlignment="Left" Height="23" Margin="148.782,0,0,46.785" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="90"/>
-        <TextBox IsReadOnly="True" x:Name="textBox1_Copy" Text="{Binding Y}" HorizontalAlignment="Left" Height="23" Margin="149.449,0,0,10" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="90"/>
+        <TextBox IsReadOnly="True" x:Name="textBox1" Text="{Binding X}" HorizontalAlignment="Left" Height="23" Margin="148.782,0,0,46.785" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="53.272"/>
+        <TextBox IsReadOnly="True" x:Name="textBox1_Copy" Text="{Binding Y}" HorizontalAlignment="Left" Height="23" Margin="149.62,0,0,9" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="53.272"/>
         <Label x:Name="label1" Content="X" HorizontalAlignment="Left" Margin="125.333,0,0,46.785" VerticalAlignment="Bottom"/>
-        <Label x:Name="label1_Copy" Content="Y" HorizontalAlignment="Left" Margin="125.333,0,0,10" VerticalAlignment="Bottom"/>
+        <Label x:Name="label1_Copy" Content="Y" HorizontalAlignment="Left" Margin="125.776,0,0,9" VerticalAlignment="Bottom"/>
         <CheckBox x:Name="checkBox" Content="Round" HorizontalAlignment="Left" Margin="10,0,0,6.99" VerticalAlignment="Bottom" IsChecked="True"/>
         <Canvas MouseDown="bl_MouseDown" x:Name="bl" HorizontalAlignment="Left" Height="25.96" Margin="10,0,0,86.825" VerticalAlignment="Bottom" Width="27" Background="Black"/>
         <Canvas MouseDown="wh_MouseDown" x:Name="wh" HorizontalAlignment="Left" Height="25.96" Margin="42,0,0,86.825" VerticalAlignment="Bottom" Width="27" Background="#FF0F0F0F" OpacityMask="Black"/>
         <Canvas MouseDown="blu_MouseDown" x:Name="blu" HorizontalAlignment="Left" Height="25.96" Margin="74,0,0,86.825" VerticalAlignment="Bottom" Width="27" Background="#FF1A10FB"/>
         <Canvas MouseDown="red_MouseDown" x:Name="red" HorizontalAlignment="Left" Height="25.96" Margin="106,0,0,86.825" VerticalAlignment="Bottom" Width="27" Background="#FFFF000C"/>
         <Canvas MouseDown="gr_MouseDown" x:Name="gr" Margin="138,0,0,86.825" Background="#FF3AFF00" HorizontalAlignment="Left" Width="27" Height="25.96" VerticalAlignment="Bottom"/>
-        <ComboBox DropDownClosed="left_DropDownClosed" Text="{Binding LEFT}"  x:Name="left" HorizontalAlignment="Right" Margin="0,0,78,50.95" VerticalAlignment="Bottom" Width="63"/>
-        <ComboBox  Text="{Binding TOP}" x:Name="top" HorizontalAlignment="Right" Margin="0,0,78,13" VerticalAlignment="Bottom" Width="63" DropDownClosed="top_DropDownClosed"/>
-        <ComboBox  Text="{Binding RIGHT}" x:Name="right" HorizontalAlignment="Right" Margin="0,0,10,50.95" VerticalAlignment="Bottom" Width="63" DropDownClosed="right_DropDownClosed"/>
-        <ComboBox  Text="{Binding BOTTOM}" x:Name="bottom" HorizontalAlignment="Right" Margin="0,0,10,13" VerticalAlignment="Bottom" Width="63" DropDownClosed="bottom_DropDownClosed"/>
+        <ComboBox ToolTip="Anchor to the left" DropDownClosed="left_DropDownClosed" Text="{Binding LEFT}"  x:Name="left" HorizontalAlignment="Right" Margin="0,0,78,50.95" VerticalAlignment="Bottom" Width="63"/>
+        <ComboBox ToolTip="Anchor to the top"  Text="{Binding TOP}" x:Name="top" HorizontalAlignment="Right" Margin="0,0,78,13" VerticalAlignment="Bottom" Width="63" DropDownClosed="top_DropDownClosed"/>
+        <ComboBox  ToolTip="Anchor to the right" Text="{Binding RIGHT}" x:Name="right" HorizontalAlignment="Right" Margin="0,0,10,50.95" VerticalAlignment="Bottom" Width="63" DropDownClosed="right_DropDownClosed"/>
+        <ComboBox ToolTip="Anchor to the bottom"  Text="{Binding BOTTOM}" x:Name="bottom" HorizontalAlignment="Right" Margin="0,0,10,13" VerticalAlignment="Bottom" Width="63" DropDownClosed="bottom_DropDownClosed"/>
         <Label x:Name="label2" Content="Anchor" HorizontalAlignment="Right" Margin="0,0,92.933,90.825" VerticalAlignment="Bottom"/>
         <Label x:Name="label2_Copy" Content="Left" HorizontalAlignment="Right" Margin="0,0,111.25,68.91" VerticalAlignment="Bottom"/>
         <Label x:Name="label2_Copy1" Content="Right" HorizontalAlignment="Right" Margin="0,0,34.993,68.815" VerticalAlignment="Bottom"/>
         <Label x:Name="label2_Copy2" Content="Top" HorizontalAlignment="Right" Margin="0,0,110.63,31.085" VerticalAlignment="Bottom"/>
         <Label x:Name="label2_Copy3" Content="Bottom" HorizontalAlignment="Right" Margin="0,0,23.59,30.99" VerticalAlignment="Bottom"/>
-        <Label x:Name="label1_Copy1" Content="Width" HorizontalAlignment="Left" Margin="272.746,0,0,90.785" VerticalAlignment="Bottom"/>
-        <Label x:Name="label1_Copy2" Content="Height" HorizontalAlignment="Left" Margin="350.786,0,0,90.785" VerticalAlignment="Bottom"/>
-        <TextBox IsReadOnly="True" x:Name="textBox1_Copy3" Text="{Binding setLeftRight}" Height="23" Margin="274.453,0,165.047,46.785" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
-        <TextBox IsReadOnly="True" x:Name="textBox1_Copy4" Text="{Binding setTopBottom}" Height="23" Margin="274.453,0,165.047,10" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
-        <Label x:Name="label2_Copy4" Content="setLeftRight" HorizontalAlignment="Left" Margin="274.453,0,0,64.9" VerticalAlignment="Bottom"/>
-        <Label x:Name="label2_Copy5" Content="setTopBottom" HorizontalAlignment="Left" Margin="274.454,0,0,27.95" VerticalAlignment="Bottom"/>
+        <Label x:Name="label1_Copy1" Content="Width" HorizontalAlignment="Left" Margin="282.746,0,0,90.785" VerticalAlignment="Bottom"/>
+        <Label x:Name="label1_Copy2" Content="Height" HorizontalAlignment="Left" Margin="359.786,0,0,90.785" VerticalAlignment="Bottom"/>
+        <TextBox IsReadOnly="True" x:Name="textBox1_Copy3" Text="{Binding setLeftRight}" Height="23" Margin="288.453,0,153.047,46.785" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+        <TextBox IsReadOnly="True" x:Name="textBox1_Copy4" Text="{Binding setTopBottom}" Height="23" Margin="288.453,0,153.047,10" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+        <Label x:Name="label2_Copy4" Content="setLeftRight" HorizontalAlignment="Left" Margin="288.453,0,0,64.9" VerticalAlignment="Bottom" Width="72.333"/>
+        <Label x:Name="label2_Copy5" Content="setTopBottom" HorizontalAlignment="Left" Margin="288.454,0,0,27.95" VerticalAlignment="Bottom" Width="87.534"/>
         <Canvas MouseDown="wh_MouseDown" x:Name="wh_Copy" HorizontalAlignment="Left" Height="22.898" Margin="43.742,0,0,88.387" VerticalAlignment="Bottom" Width="23.626" Background="White" OpacityMask="Black"/>
-        <TextBox TextChanged="textBox2_TextChanged" Text="{Binding W}" x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="320.746,0,0,91.75" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="30.04"/>
-        <TextBox TextChanged="textBox2_TextChanged" Text="{Binding H}" x:Name="textBox2_Copy" HorizontalAlignment="Left" Height="23" Margin="401.413,0,0,91.785" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="30.04"/>
+        <TextBox ToolTip="Width" TextChanged="textBox2_TextChanged" Text="{Binding W}" x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="321.746,0,0,91.75" TextWrapping="NoWrap" VerticalAlignment="Bottom" Width="39.04"/>
+        <TextBox ToolTip="Height" TextChanged="textBox2_TextChanged" Text="{Binding H}" x:Name="textBox2_Copy" HorizontalAlignment="Left" Height="23" Margin="404.413,0,0,91.785" TextWrapping="NoWrap" VerticalAlignment="Bottom" Width="39.04"/>
         <ComboBox x:Name="drawerase" HorizontalAlignment="Left" Margin="176.707,0,0,89.825" VerticalAlignment="Bottom" Width="92.746" DropDownClosed="drawerase_DropDownClosed"/>
-        <Button x:Name="button" Content="Clear" Margin="0,0,10,91.785" Height="21.96" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Click="button_Click_1"/>
-        <Label  Content="{Binding About}" Margin="0,-10,34.993,0" Foreground="#FF060606" HorizontalAlignment="Right" Width="160.094" Height="23" VerticalAlignment="Top"/>
+        <Button ToolTip="Clear drawing" x:Name="button" Content="Clear" Margin="0,0,10,91.785" Height="21.96" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Click="button_Click_1"/>
+        <Label  Content="{Binding About}" Margin="0,0,10,144.071" Foreground="#FF060606" HorizontalAlignment="Right" Width="160.094" Height="23" VerticalAlignment="Bottom"/>
+        <TextBox ToolTip="Widget name" TabIndex="0" IsReadOnly="False" x:Name="name" Text="{Binding nameLeft}" Margin="207.448,0,0,46.785" TextWrapping="NoWrap" HorizontalAlignment="Left" Width="76.005" Height="23" VerticalAlignment="Bottom"/>
+        <Label x:Name="label2_Copy6" Content="Name" HorizontalAlignment="Left" Margin="206.448,0,0,64.9" VerticalAlignment="Bottom"/>
+        <Label x:Name="label2_Copy7" Content="Override Background" HorizontalAlignment="Left" Margin="6,0,0,138.775" VerticalAlignment="Bottom"/>
+        <Label x:Name="label2_Copy8" Content="-" Margin="-2,-8,0,0" VerticalAlignment="Top" Foreground="#FFF00606" HorizontalAlignment="Left" Width="26.364"/>
+        <Label x:Name="label2_Copy9" Content="+" Margin="0,0,-12,153.061" VerticalAlignment="Bottom" Foreground="#FFF00606" HorizontalAlignment="Right" Width="26.364"/>
 
     </Grid>
 </Window>

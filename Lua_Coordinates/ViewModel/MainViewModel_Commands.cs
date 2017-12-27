@@ -39,6 +39,15 @@ namespace Lua_Coordinates
       {
          get { return copyLeftRight = new DelegateCommand(cOpyLeftRight); }
       }
-      
+
+      private ICommand copyBoth;
+      /// <summary>
+      /// 
+      /// </summary>
+      public ICommand CopyBoth
+      {
+         get { return copyBoth = new DelegateCommand(cOpyBoth); }
+      }
+
    }
 }

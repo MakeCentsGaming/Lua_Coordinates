@@ -46,6 +46,21 @@ namespace Lua_Coordinates
          }
       }
 
+      private string _nameLeft;
+      /// <summary>
+      /// 
+      /// </summary>
+      public string nameLeft
+      {
+         get { return _nameLeft; }
+         set
+         {
+            _nameLeft = value;
+            OnPropertyChanged("nameLeft");
+
+         }
+      }
+
       private double _X;
       /// <summary>
       /// 

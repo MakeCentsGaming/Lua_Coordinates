@@ -64,6 +64,7 @@ namespace Lua_Coordinates
 
       private void UpdateSets()
       {
+         
          bool walt = false;
          bool halt = false;
          //if bottom true then -960
@@ -243,6 +244,11 @@ namespace Lua_Coordinates
       {
          MVM.csetLeftRight = MVM.setLeftRight;
          MVM.csetTopBottom = MVM.setTopBottom;
+      }
+
+      private void drawing_MouseEnter(object sender, MouseEventArgs e)
+      {
+         textBox.Focus();
       }
 
       /*FileStream fs = new FileStream(@"C:\Users\MakeCents\Desktop\test.png", FileMode.Open, FileAccess.Read);
